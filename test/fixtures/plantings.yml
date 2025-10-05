@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  square: 1
+  seed_packet: 1
+  num_sites: 1
+  seeds_per_site: 1
+  end: 2025-09-30
+
+two:
+  square: 1
+  seed_packet: 1
+  num_sites: 1
+  seeds_per_site: 1
+  end: 2025-09-30

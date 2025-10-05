@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bed: 1
+  x: 1
+  'y': 1
+  deleted: 2025-09-30
+
+two:
+  bed: 1
+  x: 1
+  'y': 1
+  deleted: 2025-09-30

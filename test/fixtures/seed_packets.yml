@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  company: MyString
+  year: 1
+  notes: MyText
+  isEmpty: false
+
+two:
+  type: 
+  name: MyString
+  company: MyString
+  year: 1
+  notes: MyText
+  isEmpty: false

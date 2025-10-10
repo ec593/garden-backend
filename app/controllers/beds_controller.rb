@@ -5,9 +5,15 @@ class BedsController < ApplicationController
 
   # GET /beds
   def index
-    @beds = Bed.includes(squares: :planting)
-    render json: @beds.as_json(include: { squares: { include: :planting } })
+    date = params[:date].present? ? Time.parse(params[:date]) : Time.current
+    @beds = Bed.where("created_at <= ? AND (archived IS NULL OR archived > ?)", date, date).includes(squares: :planting)
+    filter = ->(planting) {
+      return false unless planting
+      planting.start <= date.beginning_of_day && (planting.end.nil? || planting.end > date.end_of_day)
+    }
+    render json: @beds, each_serializer: BedSerializer, date_filter: filter
   end
+  
 
   # GET /beds/:id
   def show
@@ -62,6 +68,6 @@ class BedsController < ApplicationController
   end
 
   def bed_params
-    params.permit(:id, :name, :start, :end, :x, :y, :width, :height)
+    params.permit(:id, :name, :x, :y, :width, :height, :archived)
   end
 end

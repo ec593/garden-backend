@@ -3,7 +3,12 @@ class PlantingsController < ApplicationController
 
   # GET /plantings
   def index
-    @planting = Planting.all
+    if params[:date].present? 
+      date = Time.parse(params[:date])
+      @planting = Planting.where("start <= ? AND (end IS NULL OR end > ?)", date.beginning_of_day, date.end_of_day).includes(squares: :planting)
+    else
+      @planting = Planting.includes(squares: :planting)
+    end  
     render json: @planting
   end
 
@@ -45,6 +50,6 @@ class PlantingsController < ApplicationController
   end
 
   def planting_params
-    params.permit(:square_id, :seed_packet_id, :num_sites, :seeds_per_site, :end)
+    params.permit(:square_id, :seed_packet_id, :num_sites, :seeds_per_site, :num_squares, :notes, :start, :end)
   end
 end

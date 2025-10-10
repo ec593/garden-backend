@@ -5,6 +5,9 @@ class CreatePlantings < ActiveRecord::Migration[8.0]
       t.references :seed_packet, foreign_key: true
       t.integer :num_sites
       t.integer :seeds_per_site
+      t.integer :num_squares
+      t.text :notes
+      t.date :start
       t.date :end
 
       t.timestamps

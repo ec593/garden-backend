@@ -3,8 +3,16 @@ class SeedPacketsController < ApplicationController
 
   # GET /seed_packets
   def index
-    @seed_packet = SeedPacket.all
-    render json: @seed_packet
+    if params[:empty].present? 
+      if params[:empty] == 'true'
+        @seed_packets = SeedPacket.where(is_empty: true)
+      elsif params[:empty] == 'false'
+        @seed_packets = SeedPacket.where(is_empty: false) 
+      end  
+    else
+      @seed_packets = SeedPacket.all
+    end  
+    render json: @seed_packets
   end
 
   # GET /seed_packets/:id
@@ -45,6 +53,6 @@ class SeedPacketsController < ApplicationController
   end
 
   def seed_packet_params
-    params.permit(:id, :seed_type, :name, :company, :year, :notes, :isEmpty)
+    params.permit(:id, :seed_type, :name, :company, :year, :notes, :is_empty)
   end
 end

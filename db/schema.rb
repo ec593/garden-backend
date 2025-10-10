@@ -13,8 +13,7 @@
 ActiveRecord::Schema[8.0].define(version: 2025_09_30_225125) do
   create_table "beds", force: :cascade do |t|
     t.string "name"
-    t.date "start"
-    t.date "end"
+    t.datetime "archived"
     t.integer "x"
     t.integer "y"
     t.integer "width"
@@ -28,6 +27,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_30_225125) do
     t.integer "seed_packet_id"
     t.integer "num_sites"
     t.integer "seeds_per_site"
+    t.integer "num_squares"
+    t.text "notes"
+    t.date "start"
     t.date "end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -41,7 +43,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_30_225125) do
     t.string "company"
     t.integer "year"
     t.text "notes"
-    t.boolean "isEmpty"
+    t.boolean "is_empty"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,7 +52,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_30_225125) do
     t.integer "bed_id"
     t.integer "x"
     t.integer "y"
-    t.date "deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bed_id"], name: "index_squares_on_bed_id"

@@ -1,0 +1,14 @@
+<h1>Hi! Here's what's starting in the garden next week:</p>
+<ul>
+  <% if @plantings.any? %>
+    <% @plantings.each do |planting| %>
+      <li>
+        <strong><%= planting.seed_packet.seed_type + "(" + planting.seed_packet.name + ")" %></strong> - starts on <%= planting.start.strftime("%A, %B %e") %>
+      </li>
+    <% end %>
+  <% else %>
+    <li>No new plantings scheduled for this week!</li>
+  <% end %>
+</ul>
+
+<p>🌱 Happy growing!</p>

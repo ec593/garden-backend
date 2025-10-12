@@ -49,3 +49,6 @@ group :development, :test do
 end
 
 gem "active_model_serializers", "~> 0.10.15"
+
+gem "sidekiq"
+gem 'sidekiq-scheduler'

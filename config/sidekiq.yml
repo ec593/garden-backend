@@ -1,0 +1,9 @@
+:concurrency: 5
+:schedule:
+  weekly_planting_email:
+    cron: "0 6 * * 5"
+    class: WeeklyPlantingEmailJob
+    queue: default
+
+:queues:
+  - default

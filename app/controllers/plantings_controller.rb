@@ -14,7 +14,8 @@ class PlantingsController < ApplicationController
 
   # GET /plantings/:id
   def show
-    render json: @planting
+    @planting = Planting.includes(:seed_packet).find(params[:id])
+    render json: @planting.as_json(include: :seed_packet)
   end
 
   # POST /plantings

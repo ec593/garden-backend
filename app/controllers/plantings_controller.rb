@@ -9,7 +9,7 @@ class PlantingsController < ApplicationController
     else
       @planting = Planting.includes(square: :planting)
     end  
-    render json: @planting
+    render json: @planting.as_json(include: :seed_packet)
   end
 
   # GET /plantings/:id
